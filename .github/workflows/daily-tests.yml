@@ -36,6 +36,7 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
+          echo 'if (-not (Get-Command poetry -ErrorAction Ignore)) { $env:Path += ";C:\Users\runneradmin\AppData\Roaming\Python\Scripts" }' | Out-File -Append $PROFILE
           poetry run tests/run_functional_tests.py
   notify:
     name: Send email notification
