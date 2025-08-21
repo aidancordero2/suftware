@@ -34,6 +34,7 @@ jobs:
 
       - name: run tests
         run: |
+          pip install -e .
           python -m tests.run_functional_tests
 
   notify:
