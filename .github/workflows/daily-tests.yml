@@ -32,12 +32,10 @@ jobs:
           python -m build
           ls -l dist/
 
-      - name: Install Poetry and run tests
+      - name: run tests
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry install
-          echo 'if (-not (Get-Command poetry -ErrorAction Ignore)) { $env:Path += ";C:\Users\runneradmin\AppData\Roaming\Python\Scripts" }' | Out-File -Append $PROFILE
-          poetry run tests/run_functional_tests.py
+          python -m tests.run_functional_tests
+
   notify:
     name: Send email notification
     needs: test
